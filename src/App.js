@@ -44,7 +44,7 @@ const App = () => {
     <div>
       <Header />
       <Route path="/">
-        <Resume items={items} />
+        <Resume/>
       </Route>
       <Route path="/accordion">
         <Accordion items={items} />
