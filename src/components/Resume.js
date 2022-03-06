@@ -28,6 +28,30 @@ const sections = [
     Added test runs into each of the CI/CD pipelines, only allowing deployment if all tests passed 
     `,
   },
+  {
+    company: "Probe",
+    title: "Mechanical Engineer",
+    content: `Designed oil field tools using 3D modeling and FEA
+    Increased design speed by 25% by restructuring file dependencies and libraries using python and VBA
+    Reduced workload by 25% by automating documentation process using python and VBA 
+    Developed a patented novel production-logging sensor
+    `,
+  },
+  {
+    company: "MEDAL Labs",
+    title: "Software Engineer",
+    content: `Built an app to convert accelerometer data of an inclinometer into displacement algorithms and display it in a live GUI using SIMULINK, MATLAB and GUIDE`,
+  },
+  {
+    company: "Software Engineer",
+    title: "ABB",
+    content: `Created a unit-testing framework for an electro-magnetic solver using Python`,
+  },
+  {
+    company: "Universal Pegasus International",
+    title: "Software Engineering Student",
+    content: `Improved accuracy of cost estimates by creating a set of excel spreadsheets linked together with VBA`,
+  },
 ];
 
 const Resume = () => {
