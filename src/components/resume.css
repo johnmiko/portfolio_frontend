@@ -1,0 +1,8 @@
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left:auto;
+  margin-right: 0;
+  background-color: aqua;
+  /* width: '100%'; */
+}

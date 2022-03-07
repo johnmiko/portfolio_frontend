@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './resume.css';
 
 const sections = [
   {
@@ -61,24 +62,31 @@ const Resume = () => {
   const onTitleClick = (index) => {
     setActiveIndex(index);
   };
-
-  const renderedItems = sections.map((item, index) => {
+  const createSection = (item, index) => {
     const active = index === activeIndex ? 'active' : '';
     return (
-
       <React.Fragment key={item.company}>
-        <div className={`title ${active}`} onClick={() => onTitleClick(index)}>
-          <i className="dropdown icon"></i>
-          {item.company}
+        {/* <div className='flexbox-container' style={{display: "inline-block"}}> */}
+        <div className='titleContainer'>
+          <div className={`title ${active}`} style={{width: '100%', display: "inline-block"}} onClick={() => onTitleClick(index)}>
+            <i className="dropdown icon"></i>
+            {item.company}
+          </div>
+          <div className='title' style={{width: '100%', textAlign: 'right'}}>2</div>
         </div>
         <div className={`content ${active}`}>
           <p>{item.content}</p>
         </div>
       </React.Fragment>
     );
+
+  }
+
+  const jobs = sections.map((item, index) => {
+    return createSection(item, index)
   });
 
-  return <div className="ui styled accordion">{renderedItems}</div>;
+  return <div className="ui styled accordion">{jobs}</div>;
 };
 
 export default Resume;
