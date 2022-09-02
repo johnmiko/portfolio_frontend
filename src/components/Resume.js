@@ -3,22 +3,27 @@ import './resume.css';
 
 const jobs_text = [
   {
-    company: "Lone Wolf Technologies",
+    company: "Hivestack",
     title: "Software Engineer",
-    startDate: new Date(2021, 8),
+    startDate: new Date(2022, 5),
     content: `Developing several real estate technology apps using PHP, Java, Kotlin, React, Typescript, Python, SQL, Bash, Kanban Board, Github, Docker, AWS
     Was commended in our yearly check-in for my ability to quickly identify and fix problems that are not explicitly defined
     `,
   },
   {
-    company: "Attabotics",
+    company: "Lone Wolf Technologies",
     title: "Software Engineer",
-    startDate: new Date(2021, 6),
-    endDate: new Date(2021, 7),
-    content: `Wrote integration tests using C# and Microsoft SQL Server
-    Refactored existing test framework to use object oriented principles and the state machine design pattern
-    Created a CI/CD pipeline to only run specified tests to allow for quicker test development
-    Created a python repo to easily find error logs from Azure Data Explorer using the Kusto Query Language
+    startDate: new Date(2021, 8),
+    endDate: new Date(2022, 4),
+    content: `Developing and maintaining the backend ad-server. Adding new features and improving the performance of existing code using Python, Github, AWS, Jira
+    `,
+  },
+  {
+    company: "Self Employed",
+    title: "Software Engineer",
+    startDate: new Date(2020, 6),
+    endDate: new Date(2021, 8),
+    content: `Quantitative analysis of the stock market using python. Developed strategies and algorithms to find trades with the highest probability of success and profit
     `,
   },
   {
