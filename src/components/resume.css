@@ -1,8 +1,7 @@
-.titleContainer {
+.title {
   display: flex;
   flex-direction: row;
   margin-left:auto;
   margin-right: 0;
-  background-color: rgb(225, 241, 255);
   /* width: '100%'; */
 }

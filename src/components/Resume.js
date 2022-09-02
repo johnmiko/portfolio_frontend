@@ -41,8 +41,8 @@ const jobs_text = [
   {
     company: "Probe",
     title: "Mechanical Engineer",
-    startDate: new Date(2019, 8),
-    endDate: new Date(2021, 6),
+    startDate: new Date(2017, 4),
+    endDate: new Date(2019, 8),
     content: `Designed oil field tools using 3D modeling and FEA
     Increased design speed by 25% by restructuring file dependencies and libraries using python and VBA
     Reduced workload by 25% by automating documentation process using python and VBA 
@@ -74,10 +74,10 @@ const jobs_text = [
 
  
 function monthDiff(startDate, endDate) {
-  console.log('startDate')
-  console.log(startDate)
-  console.log('endDate')
-  console.log(endDate)
+  // console.log('startDate')
+  // console.log(startDate)
+  // console.log('endDate')
+  // console.log(endDate)
   let months = endDate.getMonth() - startDate.getMonth() + 1
   let years = endDate.getFullYear() - startDate.getFullYear() 
   if (months < 0) {
@@ -116,28 +116,38 @@ function monthDiff(startDate, endDate) {
 //  }
 
 const Resume = () => {  
-  const [activeIndex, setActiveIndex] = useState(null);
-
-  const onTitleClick = (index) => {
-    setActiveIndex(index);
-  };
   const createJobDatesEl = (startDate, endDate) => {
     if (!endDate) {
       endDate = new Date();
     }
     const daysBetween = monthDiff(startDate, endDate)
-    console.log('days between');
-    console.log(daysBetween)
+    // console.log('days between');
+    // console.log(daysBetween)
     return (daysBetween
 
     )
   }
-  const createSection = (item, index) => {
-    const active = index === activeIndex ? 'active' : '';
-    const dateThing = createJobDatesEl(item.startDate, item.endDate)
+  const CreateSection = (item, index) => {
+    const [active, setActiveIndex] = useState('active');
+
+    const onTitleClick = () => {
+      if (active === 'active'){
+        setActiveIndex('');
+      }        
+      else {
+        setActiveIndex('active');
+      }      
+    };
+    // const active = index === activeIndex ? '' : 'active';
+    const dateThing = createJobDatesEl(item.startDate, item.endDate) 
+
     return (
       <React.Fragment key={item.company}>
-        <div className='titleContainer'>
+        <div 
+          className={`title ${active}`} 
+          // use arrow function or else onTitleClick is run when things render
+          onClick={() => onTitleClick()}
+        >
           <div className={`title ${active}`} style={{width: '100%', display: "inline-block"}} onClick={() => onTitleClick(index)}>
             <i className="dropdown icon"></i>
             {item.company}
@@ -153,10 +163,28 @@ const Resume = () => {
   }
 
   const jobs = jobs_text.map((item, index) => {
-    return createSection(item, index)
+    return CreateSection(item, index)
   });
+  const ExpandCollapseAll = () => {
+    return (
+      <div>
+        <div className="ui form">
+          <div className="field">
+            <label>Expand/Collapse All - Not Implemented</label>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
-  return <div className="ui styled accordion">{jobs}</div>;
+  return (
+    <div>
+      <ExpandCollapseAll></ExpandCollapseAll>
+      {/* {expandCollapseAll} */}
+      <div className="ui styled accordion">
+        {jobs}
+      </div>
+    </div>)
 };
 
 export default Resume;
