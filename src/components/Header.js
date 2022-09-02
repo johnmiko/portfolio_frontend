@@ -7,9 +7,6 @@ const Header = () => {
       <Link href="/" className="item">
         Resume 
       </Link>
-      <Link href="/accordion" className="item">
-        Accordion
-      </Link>
       <Link href="/list" className="item">
         Search
       </Link>

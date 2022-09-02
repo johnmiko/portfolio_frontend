@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Resume from "./components/Resume";
-import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
@@ -46,9 +45,6 @@ const App = () => {
       <Header />
       <Route path="/">
         <Resume/>
-      </Route>
-      <Route path="/accordion">
-        <Accordion items={items} />
       </Route>
       <Route path="/list">
         <Search />
