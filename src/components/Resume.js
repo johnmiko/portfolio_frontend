@@ -6,70 +6,64 @@ const jobs_text = [
     company: "Hivestack",
     title: "Software Engineer",
     startDate: new Date(2022, 5),
-    content: `Developing several real estate technology apps using PHP, Java, Kotlin, React, Typescript, Python, SQL, Bash, Kanban Board, Github, Docker, AWS
-    Was commended in our yearly check-in for my ability to quickly identify and fix problems that are not explicitly defined
-    `,
+    content: ["Developing and maintaining the backend ad-server. Adding new features and improving the performance of existing code using Python, Github, AWS, Jira"]
+    ,
   },
   {
     company: "Lone Wolf Technologies",
     title: "Software Engineer",
     startDate: new Date(2021, 8),
     endDate: new Date(2022, 4),
-    content: `Developing and maintaining the backend ad-server. Adding new features and improving the performance of existing code using Python, Github, AWS, Jira
-    `,
+    content: ["Developing several real estate technology apps using PHP, Java, Kotlin, React, Typescript, Python, SQL, Bash, Kanban Board, Github, Docker, AWS", 
+    "Was commended in our yearly check-in for my ability to quickly identify and fix problems that are not explicitly defined"]
+    ,
   },
   {
     company: "Self Employed",
     title: "Software Engineer",
     startDate: new Date(2020, 6),
     endDate: new Date(2021, 8),
-    content: `Quantitative analysis of the stock market using python. Developed strategies and algorithms to find trades with the highest probability of success and profit
-    `,
+    content: ["Quantitative analysis of the stock market using python", 
+      "Developed strategies and algorithms to find trades with the highest probability of success and profit"]
+    ,
   },
   {
     company: "R3mote.io",
     title: "Software Engineer",
     startDate: new Date(2019, 8),
     endDate: new Date(2020, 6),
-    content: `Developed the app backend using Python/Django, Docker and PostgreSQL
-    Expanded backend API following RESTful API best practices
-    Developed and refactored frontend components using React/Redux
-    Wrote unit and integration tests using pytest, Jest, and Selenium 
-    Added test runs into each of the CI/CD pipelines, only allowing deployment if all tests passed 
-    `,
+    content: ['Developed the app backend using Python/Django, Docker and PostgreSQL',
+    'Expanded backend API following RESTful API best practices',
+    'Developed and refactored frontend components using React/Redux',
+    'Wrote unit and integration tests using pytest, Jest, and Selenium',
+    'Added test runs into each of the CI/CD pipelines, only allowing deployment if all tests passed',
+    ],
   },
   {
     company: "Probe",
     title: "Mechanical Engineer",
     startDate: new Date(2017, 4),
     endDate: new Date(2019, 8),
-    content: `Designed oil field tools using 3D modeling and FEA
-    Increased design speed by 25% by restructuring file dependencies and libraries using python and VBA
-    Reduced workload by 25% by automating documentation process using python and VBA 
-    Developed a patented novel production-logging sensor
-    `,
+    content: ['Designed oil field tools using 3D modeling and FEA',
+    'Increased design speed by 25% by restructuring file dependencies and libraries using python and VBA',
+    'Reduced workload by 25% by automating documentation process using python and VBA',
+    'Developed a patented novel production-logging sensor',
+    ],
   },
   {
     company: "MEDAL Labs",
     title: "Software Engineer",
     startDate: new Date(2016, 3),
     endDate: new Date(2016, 6),
-    content: `Built an app to convert accelerometer data of an inclinometer into displacement algorithms and display it in a live GUI using SIMULINK, MATLAB and GUIDE`,
+    content: ['Built an app to convert accelerometer data of an inclinometer into displacement algorithms and display it in a live GUI using SIMULINK, MATLAB and GUIDE'],
   },
   {
     company: "ABB",
     title: "Software Engineer",
     startDate: new Date(2014, 5),
     endDate: new Date(2015, 5),
-    content: `Created a unit-testing framework for an electro-magnetic solver using Python`,
-  },
-  {
-    company: "Universal Pegasus International",
-    title: "Software Engineer - Student",
-    startDate: new Date(2013, 3),
-    endDate: new Date(2013, 8),
-    content: `Improved accuracy of cost estimates by creating a set of excel spreadsheets linked together with VBA`,
-  },
+    content: ['Created a unit-testing framework for an electro-magnetic solver using Python'],
+  }
 ];
 
  
@@ -138,8 +132,12 @@ const Resume = () => {
         setActiveIndex('active');
       }      
     };
-    // const active = index === activeIndex ? '' : 'active';
     const dateThing = createJobDatesEl(item.startDate, item.endDate) 
+    const content = item.content.map((text, index) => {
+      return <li>{text}</li>
+    });
+    
+    // <p>{item.content}</p>
 
     return (
       <React.Fragment key={item.company}>
@@ -156,7 +154,9 @@ const Resume = () => {
           <div className='title' style={{width: '100%', textAlign: 'right'}}>{dateThing}</div>
         </div>
         <div className={`content ${active}`}>
-          <p>{item.content}</p>
+          <ul style={{'margin': 0, paddingInlineStart: '20px'}}>
+          {content}          
+          </ul>          
         </div>
       </React.Fragment>
     );
@@ -179,10 +179,10 @@ const Resume = () => {
   };
 
   return (
-    <div>
+    <div style={{'margin-left': '1%'}}>
       <ExpandCollapseAll></ExpandCollapseAll>
       {/* {expandCollapseAll} */}
-      <div className="ui styled accordion">
+      <div className="ui accordion" style={{'width': '50%'}}>
         {jobs}
       </div>
     </div>)
