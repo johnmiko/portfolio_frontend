@@ -51,21 +51,21 @@ const jobs_text = [
   },
   {
     company: "MEDAL Labs",
-    title: "Software Engineering Student",
+    title: "Software Engineer",
     startDate: new Date(2016, 3),
     endDate: new Date(2016, 6),
     content: `Built an app to convert accelerometer data of an inclinometer into displacement algorithms and display it in a live GUI using SIMULINK, MATLAB and GUIDE`,
   },
   {
-    company: "Software Engineering Intern",
-    title: "ABB",
+    company: "ABB",
+    title: "Software Engineer",
     startDate: new Date(2014, 5),
     endDate: new Date(2015, 5),
     content: `Created a unit-testing framework for an electro-magnetic solver using Python`,
   },
   {
     company: "Universal Pegasus International",
-    title: "Software Engineering Student",
+    title: "Software Engineer - Student",
     startDate: new Date(2013, 3),
     endDate: new Date(2013, 8),
     content: `Improved accuracy of cost estimates by creating a set of excel spreadsheets linked together with VBA`,
@@ -147,11 +147,12 @@ const Resume = () => {
           className={`title ${active}`} 
           // use arrow function or else onTitleClick is run when things render
           onClick={() => onTitleClick()}
-        >
-          <div className={`title ${active}`} style={{width: '100%', display: "inline-block"}} onClick={() => onTitleClick(index)}>
+        >          
+          <div className={`title ${active}`} style={{width: '100%', display: "inline-block"}} onClick={() => onTitleClick(index)}>      
             <i className="dropdown icon"></i>
             {item.company}
-          </div>
+            <div className='jobTitle' style={{fontSize: '15px'}}>{item.title}</div>
+          </div>          
           <div className='title' style={{width: '100%', textAlign: 'right'}}>{dateThing}</div>
         </div>
         <div className={`content ${active}`}>
