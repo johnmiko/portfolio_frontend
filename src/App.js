@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Resume from "./components/Resume";
+import Backend from "./components/Backend";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
@@ -63,7 +64,13 @@ const App = () => {
       <Route path="/css-cheat-sheet">
         <CSSCheatSheet />
       </Route>
+      <Route path="/backend">
+      <Backend
+          label="Examples of backend work I've done"
+        />
+      </Route>
     </div>
   );
 };
+
 export default App;

@@ -68,10 +68,6 @@ const jobs_text = [
 
  
 function monthDiff(startDate, endDate) {
-  // console.log('startDate')
-  // console.log(startDate)
-  // console.log('endDate')
-  // console.log(endDate)
   let months = endDate.getMonth() - startDate.getMonth() + 1
   let years = endDate.getFullYear() - startDate.getFullYear() 
   if (months < 0) {
@@ -136,8 +132,6 @@ const Resume = () => {
     const content = item.content.map((text, index) => {
       return <li>{text}</li>
     });
-    
-    // <p>{item.content}</p>
 
     return (
       <React.Fragment key={item.company}>
@@ -149,7 +143,7 @@ const Resume = () => {
           <div className={`title ${active}`} style={{width: '100%', display: "inline-block"}} onClick={() => onTitleClick(index)}>      
             <i className="dropdown icon"></i>
             {item.company}
-            <div className='jobTitle' style={{fontSize: '15px'}}>{item.title}</div>
+            <div className={'job-title'}>{item.title}</div>
           </div>          
           <div className='title' style={{width: '100%', textAlign: 'right'}}>{dateThing}</div>
         </div>
@@ -158,6 +152,7 @@ const Resume = () => {
           {content}          
           </ul>          
         </div>
+        <div class="ui divider"/>
       </React.Fragment>
     );
 
