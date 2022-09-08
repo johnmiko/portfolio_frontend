@@ -189,16 +189,21 @@ const Backend = ({ label }) => {
     // debugger;
     games = dotaGames.map((game) => {
       return (
-        <div
-          key={game.match_id}
-          className="item"
-          // onClick={() => onSelectedChange(game)}
-        >
-          {game.title}
-        </div>
+      <tr>
+        <td data-label="Name">{game.title}</td>
+        <td data-label="Highlights Score">{game.highlights_score}</td>
+        <td data-label="Job">{game.time_ago}</td>
+      </tr>
+        // <div
+        //   key={game.match_id}
+        //   className="item"
+        // >
+        //   {game.title}
+        // </div>
       );
     })
   // })
+  
 
   return (
     // <div class="ui container">
@@ -209,7 +214,18 @@ const Backend = ({ label }) => {
       >
         Get interesting dota games
       </button>
-      {games}
+      <table class="ui celled striped table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Highlights Score</th>
+      <th>Time Ago</th>
+    </tr>
+  </thead>
+  <tbody>
+    {games}
+  </tbody>
+</table>
       {/* <p>text goes here</p>
       <p>text goes here</p> */}
     </div>

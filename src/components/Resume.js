@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './resume.css';
 
-const jobs_text = [
+const resume_obj = [
   {
     company: "Hivestack",
     title: "Software Engineer",
-    startDate: new Date(2022, 5),
+    startDate: new Date(2022, 4),
+    endDate: new Date(2022, 9),
+    leftBecause: "Laid off during extended probation. Was too much of a team-player which they didn't need currently",
     content: ["Developing and maintaining the backend ad-server. Adding new features and improving the performance of existing code using Python, Github, AWS, Jira"]
     ,
   },
@@ -14,6 +16,7 @@ const jobs_text = [
     title: "Software Engineer",
     startDate: new Date(2021, 8),
     endDate: new Date(2022, 4),
+    leftBecause: "Moved from Alberta to Quebec, Canada. Asked Lone Wolf if they could set up taxes in the province of Quebec for me and they said no",
     content: ["Developing several real estate technology apps using PHP, Java, Kotlin, React, Typescript, Python, SQL, Bash, Kanban Board, Github, Docker, AWS", 
     "Was commended in our yearly check-in for my ability to quickly identify and fix problems that are not explicitly defined"]
     ,
@@ -23,6 +26,7 @@ const jobs_text = [
     title: "Software Engineer",
     startDate: new Date(2020, 6),
     endDate: new Date(2021, 8),
+    leftBecause: "Started well, didn't end well",
     content: ["Quantitative analysis of the stock market using python", 
       "Developed strategies and algorithms to find trades with the highest probability of success and profit"]
     ,
@@ -32,6 +36,7 @@ const jobs_text = [
     title: "Software Engineer",
     startDate: new Date(2019, 8),
     endDate: new Date(2020, 6),
+    leftBecause: "Received a paycut due to covid. Wanted to try trading stocks as full time income",
     content: ['Developed the app backend using Python/Django, Docker and PostgreSQL',
     'Expanded backend API following RESTful API best practices',
     'Developed and refactored frontend components using React/Redux',
@@ -44,6 +49,7 @@ const jobs_text = [
     title: "Mechanical Engineer",
     startDate: new Date(2017, 4),
     endDate: new Date(2019, 8),
+    leftBecause: "Switched professions from mechanical to software engineering",
     content: ['Designed oil field tools using 3D modeling and FEA',
     'Increased design speed by 25% by restructuring file dependencies and libraries using python and VBA',
     'Reduced workload by 25% by automating documentation process using python and VBA',
@@ -51,10 +57,20 @@ const jobs_text = [
     ],
   },
   {
-    company: "MEDAL Labs",
-    title: "Software Engineer",
+    company: "Geometric Energy Corporation",
+    title: "Mechanical Engineer",
+    startDate: new Date(2016, 5),
+    endDate: new Date(2016, 10),
+    leftBecause: "Didn't believe in the main product of the company",
+    content: ["Theoretical design and physical construction of novel low-concentration photovoltaic system prototypes; including using different mirror shapes and materials along with efficiency losses due to heat trapping",
+      "Initiated and conducted a feasibility study of the device: finding the range of levelized cost of energy, factoring in different geographies, margins, and markets"],
+  },
+  {
+    company: "Micro Engineering Dynamics and Automation Lab (MEDAL) at the University of Calgary",
+    title: "Software Engineering - Masters",    
     startDate: new Date(2016, 3),
     endDate: new Date(2016, 6),
+    leftBecause: "Realized I didn't want to do my Masters",
     content: ['Built an app to convert accelerometer data of an inclinometer into displacement algorithms and display it in a live GUI using SIMULINK, MATLAB and GUIDE'],
   },
   {
@@ -62,12 +78,13 @@ const jobs_text = [
     title: "Software Engineer",
     startDate: new Date(2014, 5),
     endDate: new Date(2015, 5),
+    leftBecause: "Internship",
     content: ['Created a unit-testing framework for an electro-magnetic solver using Python'],
   }
 ];
 
  
-function monthDiff(startDate, endDate) {
+function getTimeBetween(startDate, endDate = new Date()) {
   let months = endDate.getMonth() - startDate.getMonth() + 1
   let years = endDate.getFullYear() - startDate.getFullYear() 
   if (months < 0) {
@@ -106,17 +123,6 @@ function monthDiff(startDate, endDate) {
 //  }
 
 const Resume = () => {  
-  const createJobDatesEl = (startDate, endDate) => {
-    if (!endDate) {
-      endDate = new Date();
-    }
-    const daysBetween = monthDiff(startDate, endDate)
-    // console.log('days between');
-    // console.log(daysBetween)
-    return (daysBetween
-
-    )
-  }
   const CreateSection = (item, index) => {
     const [active, setActiveIndex] = useState('active');
 
@@ -128,7 +134,7 @@ const Resume = () => {
         setActiveIndex('active');
       }      
     };
-    const dateThing = createJobDatesEl(item.startDate, item.endDate) 
+    const dates = getTimeBetween(item.startDate, item.endDate) 
     const content = item.content.map((text, index) => {
       return <li>{text}</li>
     });
@@ -145,7 +151,7 @@ const Resume = () => {
             {item.company}
             <div className={'job-title'}>{item.title}</div>
           </div>          
-          <div className='title' style={{width: '100%', textAlign: 'right'}}>{dateThing}</div>
+          <div className='title' style={{width: '100%', textAlign: 'right'}}>{dates}</div>
         </div>
         <div className={`content ${active}`}>
           <ul style={{'margin': 0, paddingInlineStart: '20px'}}>
@@ -158,7 +164,7 @@ const Resume = () => {
 
   }
 
-  const jobs = jobs_text.map((item, index) => {
+  const jobs = resume_obj.map((item, index) => {
     return CreateSection(item, index)
   });
   const ExpandCollapseAll = () => {
