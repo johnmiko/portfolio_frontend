@@ -7,7 +7,7 @@ const resume_obj = [
     title: "Software Engineer",
     startDate: new Date(2022, 4),
     endDate: new Date(2022, 7),
-    leftBecause: "Laid off during extended probation. Was too much of a team-player which they didn't need currently",
+    leftBecause: "Laid off during extended probation. Was too much of a team-player which they didn't need currently. We parted ways amicably and I received a letter of recommendation",
     content: ["Developing and maintaining the backend ad-server. Adding new features and improving the performance of existing code using Python, Github, AWS, Jira"]
     ,
   },
@@ -171,7 +171,9 @@ const Resume = () => {
         <div className={`content ${active}`}>
           <ul style={{'margin': 0, paddingInlineStart: '20px'}}>
           {content}          
-          </ul>          
+          </ul>
+          <br></br>
+          {`Reason for leaving: ${item.leftBecause}`}          
         </div>
         <div class="ui divider"/>
       </React.Fragment>
@@ -196,7 +198,7 @@ const Resume = () => {
 
   return (
     <div style={{'margin-left': '1%'}}>
-      <ExpandCollapseAll></ExpandCollapseAll>
+      {/* <ExpandCollapseAll></ExpandCollapseAll> */}
       {/* {expandCollapseAll} */}
       <div className="ui accordion" style={{'width': '50%'}}>
         {jobs}
