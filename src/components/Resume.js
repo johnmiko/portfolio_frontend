@@ -125,7 +125,6 @@ function getTimeBetween(startDate, endDate = new Date()) {
 
 const Resume = () => {  
   const CreateSection = (item, index) => {
-    // debugger;
     const [active, setActiveIndex] = useState('active');
     function join(t, a, s) {
       function format(m) {
