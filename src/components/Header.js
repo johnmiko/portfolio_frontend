@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import Link from "./Link";
 
 const Header = () => {
-  const [visible, setVisible] = useState("hidden");
-  const toggleVisible = () => {
-    if (visible === "visible") {
-      setVisible("hidden");
+  const [frontMenuVisible, setFrontMenuVisible] = useState("hidden");
+  const [backMenuVisible, setBackMenuVisible] = useState("hidden");
+  const toggleFrontMenuVisible = () => {
+    if (frontMenuVisible === "visible") {
+      setFrontMenuVisible("hidden");
     } else {
-      setVisible("visible");
+      setFrontMenuVisible("visible");
+    }
+  };
+  const toggleBackMenuVisible = () => {
+    if (frontMenuVisible === "visible") {
+      setBackMenuVisible("hidden");
+    } else {
+      setBackMenuVisible("visible");
     }
   };
   return (
@@ -17,19 +25,20 @@ const Header = () => {
       </Link>
       <div
         className={`ui dropdown item`}
-        onMouseEnter={() => setVisible("visible")}
-        onMouseLeave={() => setVisible("hidden")}
+        onMouseEnter={() => setFrontMenuVisible("frontMenuVisible")}
+        onMouseLeave={() => setFrontMenuVisible("hidden")}
       >
-        <div onClick={() => toggleVisible()}>
+        <div onClick={() => toggleFrontMenuVisible()}>
           Frontend
           <i class="dropdown icon"></i>
         </div>
-        <div className={`menu transition ${visible}`}>
-          <Link href="/list" className="item">
-            Search
-          </Link>
-          <Link href="/dropdown" className="item">
-            Dropdown
+        <div
+          className={`menu transition ${frontMenuVisible}`}
+          // this seems to mess with the button a bit, need to look into
+          // onClick={() => setFrontMenuVisible("hidden")}
+        >
+          <Link href="/wiki-search" className="item">
+            Wiki Search
           </Link>
           <Link href="/translate" className="item">
             Translate
@@ -39,9 +48,24 @@ const Header = () => {
           </Link>
         </div>
       </div>
-      <Link href="/backend" className="item">
-        Backend
-      </Link>
+      <div
+        className={`ui dropdown item`}
+        onMouseEnter={() => setBackMenuVisible("visible")}
+        onMouseLeave={() => setBackMenuVisible("hidden")}
+      >
+        <div onClick={() => toggleBackMenuVisible()}>
+          Backend
+          <i class="dropdown icon"></i>
+        </div>
+        <div className={`menu transition ${backMenuVisible}`}>
+          <Link href="/dota-api" className="item">
+            Dota API
+          </Link>
+          {/* <Link href="/coding-challenges" className="item">
+            Coding Challenges
+          </Link> */}
+        </div>
+      </div>
     </div>
   );
 };
