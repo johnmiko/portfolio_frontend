@@ -1,26 +1,12 @@
 import React from "react";
 import Resume from "./components/Resume";
 import Backend from "./components/Backend";
+import Fullstack from "./components/Fullstack";
 import Search from "./components/frontend/Search";
 import Translate from "./components/frontend/Translate";
 import Route from "./components/header/Route";
 import Header from "./components/header/Header";
 import CSSCheatSheet from "./components/frontend/CSSCheatSheet.js";
-
-const items = [
-  {
-    title: "What is React?",
-    content: "React is a front end javascript framework",
-  },
-  {
-    title: "Why use React?",
-    content: "React is a favorite JS library among engineers",
-  },
-  {
-    title: "How do you use React?",
-    content: "You use React by creating components",
-  },
-];
 
 const App = () => {
   return (
@@ -39,7 +25,7 @@ const App = () => {
         <CSSCheatSheet />
       </Route>
       <Route path="/dota-api">
-        <Backend />
+        <Fullstack />
       </Route>
       <Route path="/coding-challenges">
         <Backend label="Examples of backend work I've done" />
