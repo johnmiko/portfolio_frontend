@@ -3,8 +3,8 @@ import Resume from "./components/Resume";
 import Backend from "./components/Backend";
 import Search from "./components/frontend/Search";
 import Translate from "./components/frontend/Translate";
-import Route from "./components/Route";
-import Header from "./components/Header";
+import Route from "./components/header/Route";
+import Header from "./components/header/Header";
 import CSSCheatSheet from "./components/frontend/CSSCheatSheet.js";
 
 const items = [
