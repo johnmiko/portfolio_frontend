@@ -4,18 +4,11 @@ import Link from "./Link";
 const Header = () => {
   const [frontMenuVisible, setFrontMenuVisible] = useState("hidden");
   const [backMenuVisible, setBackMenuVisible] = useState("hidden");
-  const toggleFrontMenuVisible = () => {
-    if (frontMenuVisible === "visible") {
-      setFrontMenuVisible("hidden");
+  const toggleVisibility = (stateVar, setStateVar) => {
+    if (stateVar === "visible") {
+      setStateVar("hidden");
     } else {
-      setFrontMenuVisible("visible");
-    }
-  };
-  const toggleBackMenuVisible = () => {
-    if (frontMenuVisible === "visible") {
-      setBackMenuVisible("hidden");
-    } else {
-      setBackMenuVisible("visible");
+      setStateVar("visible");
     }
   };
   return (
@@ -25,10 +18,14 @@ const Header = () => {
       </Link>
       <div
         className={`ui dropdown item`}
-        onMouseEnter={() => setFrontMenuVisible("frontMenuVisible")}
+        onMouseEnter={() => setFrontMenuVisible("visible")}
         onMouseLeave={() => setFrontMenuVisible("hidden")}
       >
-        <div onClick={() => toggleFrontMenuVisible()}>
+        <div
+          onClick={() =>
+            toggleVisibility(frontMenuVisible, setFrontMenuVisible)
+          }
+        >
           Frontend
           <i class="dropdown icon"></i>
         </div>
@@ -53,7 +50,9 @@ const Header = () => {
         onMouseEnter={() => setBackMenuVisible("visible")}
         onMouseLeave={() => setBackMenuVisible("hidden")}
       >
-        <div onClick={() => toggleBackMenuVisible()}>
+        <div
+          onClick={() => toggleVisibility(backMenuVisible, setBackMenuVisible)}
+        >
           Backend
           <i class="dropdown icon"></i>
         </div>
