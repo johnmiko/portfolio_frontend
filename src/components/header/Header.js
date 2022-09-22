@@ -77,7 +77,7 @@ const Header = () => {
           <i class="dropdown icon"></i>
         </div>
         <div className={`menu transition ${backMenuVisible}`}>
-          <Link href="/coding-questions" className="item">
+          <Link href="/coding-challenges" className="item">
             Coding Questions
           </Link>
         </div>

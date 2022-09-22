@@ -1,0 +1,9 @@
+div {
+  white-space: pre-wrap;
+}
+.answer {
+  font-family: monospace;
+  background-color:#ffffff;
+  color:rgb(0, 0, 0);
+
+}

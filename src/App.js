@@ -28,7 +28,7 @@ const App = () => {
         <Fullstack />
       </Route>
       <Route path="/coding-challenges">
-        <Backend label="Examples of backend work I've done" />
+        <Backend />
       </Route>
     </div>
   );
