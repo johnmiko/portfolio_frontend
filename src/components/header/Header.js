@@ -14,6 +14,9 @@ const Header = () => {
   };
   return (
     <div className="ui borderless menu">
+      <Link href="/youtube-api" className="item">
+        Youtube API
+      </Link>
       <Link href="/" className="item">
         Resume
       </Link>

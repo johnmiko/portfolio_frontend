@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import YoutubeApi from "./youtube/components/App";
 
 const axios = require("axios");
 
@@ -21,6 +22,7 @@ const Fullstack = ({ label }) => {
   //     });
   //   };
   // }, []);
+  async function searchYoutube(term) {}
 
   async function getcontent() {
     // manual set the content
@@ -175,9 +177,6 @@ const Fullstack = ({ label }) => {
       setContent(error);
     }
   }
-  // let content = getcontent();
-  // useEffect(() => {
-
   console.log("content");
   console.log(content);
   let table;
@@ -190,6 +189,7 @@ const Fullstack = ({ label }) => {
       </tr>
     </thead>
   );
+  console.log("content");
   console.log(content);
   if (content === undefined) {
     table = <table class="ui celled striped table">{tableHeader}</table>;
@@ -204,17 +204,17 @@ const Fullstack = ({ label }) => {
       </React.Fragment>
     );
   } else {
-    let games =
-      tableHeader &
-      content.map((game) => {
-        return (
-          <tr>
-            <td data-label="Name">{game.title}</td>
-            <td data-label="Highlights Score">{game.highlights_score}</td>
-            <td data-label="Job">{game.time_ago}</td>
-          </tr>
-        );
-      });
+    let games = content.map((game) => {
+      return (
+        <tr>
+          <td data-label="Name" onClick={searchYoutube}>
+            {game.title}
+          </td>
+          <td data-label="Highlights Score">{game.highlights_score}</td>
+          <td data-label="Job">{game.time_ago}</td>
+        </tr>
+      );
+    });
     table = (
       <table class="ui celled striped table">
         {tableHeader}
@@ -237,6 +237,7 @@ const Fullstack = ({ label }) => {
         Search for interesting dota games
       </button>
       {table}
+      <YoutubeApi />
     </div>
   );
 };

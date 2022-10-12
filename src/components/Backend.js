@@ -4,68 +4,67 @@ import "./backend.css";
 const q_and_as_obj = [
   {
     question: `Given a list of numbers, return the number closest to 0
-Edge cases
+Edge cases:
   1) return 0 if input is None
   2) return 0 if list is empty
   3) return positive integer if same as negative integer`,
     answer: [
       `def closest_to_zero(ints):
-    if ints is None:
-        return 0
-    if not ints:
-        return 0
-    answers = [ints[0]]
-    for i in ints[1:]:
-        if abs(i) < abs(answers[0]):
-            answers = [i]
-        elif abs(i) == abs(answers[0]):
-            answers.append(i)
-    answer = max(answers)
-    print(answer)
-    return answer
-    
-    closest_to_zero([1, 2]) #1
-    closest_to_zero([3, 2]) #2
-    closest_to_zero([-1, 2]) #-1
-    closest_to_zero([-2, 2, -2]) #2
-    closest_to_zero([4, 4, 3]) #3
-    `,
+  if ints is None:
+      return 0
+  if not ints:
+      return 0
+  answers = [ints[0]]
+  for i in ints[1:]:
+      if abs(i) < abs(answers[0]):
+          answers = [i]
+      elif abs(i) == abs(answers[0]):
+          answers.append(i)
+  answer = max(answers)
+  print(answer)
+  return answer
+  
+  closest_to_zero([1, 2]) #1
+  closest_to_zero([3, 2]) #2
+  closest_to_zero([-1, 2]) #-1
+  closest_to_zero([-2, 2, -2]) #2
+  closest_to_zero([4, 4, 3]) #3
+  `,
     ],
   },
   {
     question:
       "Given a value of cash, outputs the number bills that make up that number given bills of tens, fives, and twos",
     answer: [
-      `
-    from math import floor
-    
-    def change(cash):
-        tens = floor(cash / 10)
-        cash2 = cash - (tens * 10)
-        fives = floor(cash2 / 5)
-        cash3 = cash2 - (fives * 5)
-        twos = floor(cash3 / 2)
-    
-        if (tens == 0) and (fives == 0) and (twos == 0):
-            print('None')
-            return 'None'
-        print(f'tens {tens}')
-        print(f'fives {fives}')
-        print(f'twos {twos}')
-        print()
-        return {
-            'two': twos,
-            'five': fives,
-            'ten': tens
-        }
-    
-    
-    change(42)
-    """
-    tens 4
-    fives 0
-    twos 1
-    """`,
+      `from math import floor
+  
+def change(cash):
+    tens = floor(cash / 10)
+    cash2 = cash - (tens * 10)
+    fives = floor(cash2 / 5)
+    cash3 = cash2 - (fives * 5)
+    twos = floor(cash3 / 2)
+
+    if (tens == 0) and (fives == 0) and (twos == 0):
+        print('None')
+        return 'None'
+    print(f'tens {tens}')
+    print(f'fives {fives}')
+    print(f'twos {twos}')
+    print()
+    return {
+        'two': twos,
+        'five': fives,
+        'ten': tens
+    }
+
+
+  change(42)
+  """
+  tens 4
+  fives 0
+  twos 1
+  """`,
     ],
   },
   {
